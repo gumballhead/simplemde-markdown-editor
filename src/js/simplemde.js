@@ -956,12 +956,14 @@ SimpleMDE.prototype.render = function(el) {
 	if(options.spellChecker !== false) {
 		mode = "spell-checker";
 		backdrop = options.parsingConfig;
-		backdrop.name = "gfm";
-		backdrop.gitHubSpice = false;
+		if(backdrop.name == undefined) {
+			backdrop.name = "gfm";
+		}
 	} else {
 		mode = options.parsingConfig;
-		mode.name = "gfm";
-		mode.gitHubSpice = false;
+		if(mode.name == undefined) {
+			mode.name = "gfm";
+		}
 	}
 
 	this.codemirror = CodeMirror.fromTextArea(el, {
